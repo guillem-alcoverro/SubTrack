@@ -17,6 +17,35 @@ function App() {
     getData()
   }, [])
 
+  const handleAddSubscription = async (subscriptionData) => {
+
+    if (!subscriptionData.name || !subscriptionData.category || !subscriptionData.price) {
+      console.error("Missing required fields: name, category, price")
+      return
+    }
+    subscriptionData.price = parseFloat(subscriptionData.price).toFixed(2)
+
+    try {
+      const response = await fetch('/api/subscriptions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(subscriptionData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        
+        setSubscriptions([...subscriptions, data]);
+      } else {
+        console.error("The server returned an error");
+      }
+    } catch (error) {
+      console.error("Connection error:", error);
+    }
+  };
+
 return (
     <div className="App">
       <header>
@@ -53,7 +82,12 @@ return (
           ))
         )}
         <div className="card">
-          <button onClick={() => {}}>
+          <button onClick={() => {handleAddSubscription({
+            name: "Youtube Premium",
+            category: "entertainment",
+            price: 13.99,
+            icon: "https://www.freepnglogos.com/uploads/youtube-icon-png-12.png"
+          })}}>
             + Add Subscription
           </button>
         </div>
