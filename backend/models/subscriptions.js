@@ -16,7 +16,7 @@ const getSubscriptionsById = (id) => {
 
 const createSubscriptions = (subscriptions) => {
     const q = db.prepare(`
-        INSERT INTO subscriptions (name, category, price, dateStart, dateEnd, billingCycle, photo)
+        INSERT INTO subscriptions (name, category, price, dateStart, dateEnd, frequency, icon)
         VALUES (?, ?, ?, ?, ?, ?, ?)
     `)
     const result = q.run(
@@ -25,8 +25,8 @@ const createSubscriptions = (subscriptions) => {
         subscriptions.price,
         subscriptions.dateStart ?? new Date().toLocaleDateString(),
         subscriptions.dateEnd ?? null,
-        subscriptions.billingCycle ?? "monthly",
-        subscriptions.photo ?? "https://placehold.co/150x150?text=TEMPLATE"
+        subscriptions.frequency ?? "monthly",
+        subscriptions.icon ?? "https://placehold.co/150x150?text=TEMPLATE"
     )
     return getSubscriptionsById(result.lastInsertRowid)
 }

@@ -8,9 +8,10 @@ POST {{baseUrl}}/subscriptions
 Content-Type: application/json
 
 {
-    "name": "Netflix",
+    "name": "Youtube Premium",
     "category": "entertainment",
-    "price": 14.99
+    "price": 13.99,
+    "icon": "https://www.freepnglogos.com/uploads/youtube-icon-png-12.png"
 }
 
 ###

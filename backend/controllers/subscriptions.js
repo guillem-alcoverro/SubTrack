@@ -19,7 +19,7 @@ router.get("/:id", (request, response) => {
 })
 
 router.post("/", (request, response) => {
-    const { name, category, price, dateStart, dateEnd, billingCycle, photo } = request.body
+    const { name, category, price, dateStart, dateEnd, frequency, icon } = request.body
     if (!name || !category || !price) {
         return response.status(400).json({ error: "Missing required fields: name, category, price" })
     }
@@ -29,8 +29,8 @@ router.post("/", (request, response) => {
         price,
         dateStart,
         dateEnd,
-        billingCycle,
-        photo
+        frequency,
+        icon
     })
     response.status(201).json(subscription)
 })

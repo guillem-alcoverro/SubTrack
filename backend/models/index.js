@@ -10,8 +10,8 @@ const initDb = () => {
             price FLOAT NOT NULL,
             dateStart TEXT NOT NULL,
             dateEnd TEXT,
-            billingCycle TEXT NOT NULL CHECK(billingCycle IN ('monthly', 'annual')),
-            photo TEXT NOT NULL
+            frequency TEXT NOT NULL CHECK(frequency IN ('weekly', 'monthly', 'annual')),
+            icon TEXT NOT NULL
         )
     `)
 }
