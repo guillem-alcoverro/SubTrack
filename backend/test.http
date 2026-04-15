@@ -1,0 +1,17 @@
+@baseUrl = http://localhost:8000/api
+
+GET {{baseUrl}}/subscriptions
+
+###
+
+POST {{baseUrl}}/subscriptions
+Content-Type: application/json
+
+{
+    "name": "Netflix",
+    "category": "entertainment",
+    "price": 14.99
+}
+
+###
+GET {{baseUrl}}/subscriptions/1
